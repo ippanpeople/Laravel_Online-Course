@@ -1,0 +1,22 @@
+@import "test.scss";
+@import "c.css";
+@import "fonts/Heebo.css";
+
+body {
+    font-family: 'Heebo', sans-serif;
+}
+
+#home {
+    .card {
+        width: 400px;
+        border: 1px solid black;
+
+        .title {
+            font-size: 100px;
+        }
+
+        .description {
+            color: blue;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+#ccss {
+    background-image: url(/images/sticker-png-control-panel-firewall-de-windows-icon-thumbnail.png?72e20f0281099a3b3536e857b6a14c38);
+}
+
+/* hebrew */
+@font-face {
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(/fonts/NGS6v5_NC0k9P9H0TbFhsqMA6aw.woff2?6813caee36c87e8c81917218340b8273) format('woff2');
+    unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+  }
+
+#test .card {
+  width: 400px;
+  border: 1px solid black;
+}
+#test .card .title {
+  font-size: 100px;
+}
+#test .card .description {
+  color: red;
+}
+
+body {
+  font-family: "Heebo", sans-serif;
+}
+
+#home .card {
+  width: 400px;
+  border: 1px solid black;
+}
+#home .card .title {
+  font-size: 100px;
+}
+#home .card .description {
+  color: blue;
+}

@@ -1,0 +1,14 @@
+#test {
+    .card {
+        width: 400px;
+        border: 1px solid black;
+
+        .title {
+            font-size: 100px;
+        }
+
+        .description {
+            color: red;
+        }
+    }
+}
