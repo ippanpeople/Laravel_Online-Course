@@ -43,6 +43,47 @@ class ProductController extends Controller
 
     }
 
+    public function create ()
+    {
+        return view('product.create');
+    }
+    public function update (Request $request, $id)
+    {
+        // $method = $request->method();
+        // print_r($method);
+        $products = $this->getProducts();
+        $index = $id -1;
+        if($index < 0 || $index >= count($products)){
+            abort(404);
+        }
+
+        $product = $products[$index];
+
+        return redirect()->route('products.edit', ['product' => $product['id']]);
+    }
+    public function destroy ($id)
+    {
+        //刪除後就沒有product頁面了 所以應該要重新導向回 index
+        return redirect()->route('products.index');
+    }
+    public function store ()
+    {
+        return redirect()->route('products.index');
+    }
+    public function edit ($id)
+    {
+        $products = $this->getProducts();
+        $index = $id -1;
+        if($index < 0 || $index >= count($products)){
+            abort(404);
+        }
+
+        $product = $products[$index];
+        return view('product.edit', [
+            "product" => $product
+        ]);
+    }
+
     private function getProducts()
     {
         return [
@@ -56,4 +97,5 @@ class ProductController extends Controller
                 ]
               ];
     }
+
 }

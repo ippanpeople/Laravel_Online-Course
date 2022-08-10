@@ -5,4 +5,5 @@
     {{-- 要顯示東西必須從public（下的路徑）下手, 另外使用 "asset+路徑" 就可以在blade中使用public中的路徑 --}}
     <img src="{{ $product['imgUrl'] }}" width="400">
     <img src="{{ $productUrl }}" width="400">
+    <a href="{{ route('products.index') }}">home page</a>
 @endsection
