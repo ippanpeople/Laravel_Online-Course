@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +38,9 @@ Route::get('/layouts', function () {
     return view('layouts/template');
 });
 
-Route::get('/products/{id}',
-    [ProductController::class, 'show']
-)->where('id', '[0-9]+'); //Route::get('url路徑', [controller名::class, 'controller中的function名']);
+// Route::get('/products/{id}',
+//     [ProductController::class, 'show']
+// )->where('id', '[0-9]+'); //Route::get('url路徑', [controller名::class, 'controller中的function名']);
 
+Route::resource('products', ProductController::class); //php artisan make:controller OrderController --resource 後 一次生成所有請求方法route的寫法
+Route::resource('orders', OrderController::class);
