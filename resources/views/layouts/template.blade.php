@@ -18,4 +18,5 @@
     </div>
     @include('layouts.footer')
 </body>
+@yield('inline_js')
 </html>

@@ -2058,9 +2058,16 @@ module.exports = {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
+
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+window.initAddToCart = _cart__WEBPACK_IMPORTED_MODULE_0__.initAddToCart;
 
 /***/ }),
 
@@ -2092,6 +2099,36 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cart.js":
+/*!******************************!*\
+  !*** ./resources/js/cart.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "initAddToCart": () => (/* binding */ initAddToCart)
+/* harmony export */ });
+function initAddToCart() {
+  // let product = "{{ $product['name'] }}"
+  var addToCartBtn = document.getElementById('addToCart');
+
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', function (event) {
+      var quantityInput = document.querySelector('input[name="quantity"]');
+      var quantity = parseInt(Cookies.get('quantity')) || 0;
+      var addQuantity = parseInt(quantityInput.value) || 0;
+      var allQuantity = quantity + addQuantity;
+      Cookies.set('quantity', allQuantity); // alert('add ' + addQuantity + ' ' + product + ', In Cart : ' + allQuantity)
+    });
+  }
+}
+
+
 
 /***/ }),
 
@@ -19600,6 +19637,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

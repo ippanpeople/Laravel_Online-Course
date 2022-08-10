@@ -33,7 +33,7 @@ class ProductController extends Controller
 
             return view('product.show', [
                 "product" => $product,
-                "productUrl" => $product['imgUrl']
+                // "productUrl" => $product['imgUrl']
             ]);
 
         }else{
@@ -89,10 +89,14 @@ class ProductController extends Controller
         return [
                 [
                     "id" => 1,
+                    "name" => "Orange",
+                    "price" => 100,
                     "imgUrl" => asset('images/orange01.jpg')
                 ],
                 [
                     "id" => 2,
+                    "name" => "Apple",
+                    "price" => 200,
                     "imgUrl" => asset('images/apple01.jpeg')
                 ]
               ];
