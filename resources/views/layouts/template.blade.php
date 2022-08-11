@@ -17,6 +17,7 @@
         @yield('content')
     </div>
     @include('layouts.footer')
+    @section('inline_js')
+    @show
 </body>
-@yield('inline_js')
 </html>

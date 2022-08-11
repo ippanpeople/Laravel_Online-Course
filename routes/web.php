@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,3 +45,4 @@ Route::get('/layouts', function () {
 
 Route::resource('products', ProductController::class); //php artisan make:controller OrderController --resource 後 一次生成所有請求方法route的寫法
 Route::resource('orders', OrderController::class);
+Route::resource('cart', CartController::class);
