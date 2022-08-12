@@ -45,4 +45,7 @@ Route::get('/layouts', function () {
 
 Route::resource('products', ProductController::class); //php artisan make:controller OrderController --resource 後 一次生成所有請求方法route的寫法
 Route::resource('orders', OrderController::class);
+
+Route::patch('cart/cookie', [CartController::class, 'updateCookie'])->name('cart.cookie.update');
+Route::delete('cart/cookie', [CartController::class, 'deleteCookie'])->name('cart.cookie.delete');
 Route::resource('cart', CartController::class);

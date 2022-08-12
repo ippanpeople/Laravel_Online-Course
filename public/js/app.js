@@ -120,7 +120,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 // require('./bootstrap')
 
+
 window.initAddToCart = _cart__WEBPACK_IMPORTED_MODULE_0__["initAddToCart"];
+window.initCartDeleteButton = _cart__WEBPACK_IMPORTED_MODULE_0__["initCartDeleteButton"];
 
 /***/ }),
 
@@ -128,12 +130,13 @@ window.initAddToCart = _cart__WEBPACK_IMPORTED_MODULE_0__["initAddToCart"];
 /*!******************************!*\
   !*** ./resources/js/cart.js ***!
   \******************************/
-/*! exports provided: initAddToCart */
+/*! exports provided: initAddToCart, initCartDeleteButton */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAddToCart", function() { return initAddToCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initCartDeleteButton", function() { return initCartDeleteButton; });
 function initCart() {
   return getCart();
 }
@@ -180,6 +183,35 @@ function initAddToCart(productId) {
       // let allQuantity = quantity + addQuantity
       // Cookies.set('quantity', allQuantity)
       // alert('add ' + addQuantity + ', In Cart : ' + allQuantity)
+    });
+  }
+}
+
+function initCartDeleteButton(actionUrl) {
+  var dels = document.querySelectorAll('.delete');
+
+  for (var index = 0; index < dels.length; index++) {
+    var del = dels[index];
+    del.addEventListener('click', function (e) {
+      var btn = e.target;
+      var dataId = btn.getAttribute('data-id');
+      var formData = new FormData();
+      formData.append('_method', 'DELETE');
+      var csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+      var csrfToken = csrfTokenMeta.content;
+      formData.append('_token', csrfToken);
+      formData.append('id', dataId);
+      var request = new XMLHttpRequest();
+      request.open("POST", actionUrl);
+
+      request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE && request.status === 200 && request.responseText === "success") {
+          console.log(request.responseText);
+          window.location.reload();
+        }
+      };
+
+      request.send(formData);
     });
   }
 }

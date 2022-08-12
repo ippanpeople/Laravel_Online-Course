@@ -10,6 +10,7 @@
         <input type="number" name="quantity" min="1" value="1">
         <button type="button" id="addToCart">Add to cart</button>
     </div>
+    <a href="{{ route('cart.index') }}">go cart</a>
     <a href="{{ route('products.index') }}">home page</a>
 @endsection
 

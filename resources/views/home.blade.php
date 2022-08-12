@@ -6,7 +6,7 @@
     <main id="home">
         <h1 class="title">Home Page</h1>
         <div class="card">
-            <p class="title">Title</p>
+            <p class="title">Laravel 8</p>
             <div class="description">
                 <p>description description</p>
                 <p>description description</p>

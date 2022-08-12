@@ -38,7 +38,7 @@ function initAddToCart(productId){
     let addToCartBtn = document.getElementById('addToCart')
 
     if(addToCartBtn){
-        addToCartBtn.addEventListener('click', function (event) {
+        addToCartBtn.addEventListener('click', function(event) {
             let quantityInput = document.querySelector('input[name="quantity"]')
             addProductToCart(productId, quantityInput.value)
             alertProductQuantity(productId)
@@ -52,5 +52,30 @@ function initAddToCart(productId){
         })
     }
 }
+function initCartDeleteButton(actionUrl){
+    let dels = document.querySelectorAll('.delete')
+    for(let index = 0; index < dels.length; index++){
+        let del = dels[index]
+        del.addEventListener('click', function(e){
+            let btn = e.target
+            let dataId = btn.getAttribute('data-id')
+            let formData = new FormData()
+            formData.append('_method', 'DELETE')
+            let csrfTokenMeta = document.querySelector('meta[name="csrf-token"]')
+            let csrfToken = csrfTokenMeta.content
+            formData.append('_token', csrfToken)
+            formData.append('id', dataId)
+            let request = new XMLHttpRequest()
+            request.open("POST", actionUrl)
+            request.onreadystatechange = function(){
+                if(request.readyState === XMLHttpRequest.DONE && request.status === 200 && request.responseText === "success"){
+                    console.log(request.responseText)
+                    window.location.reload()
+                }
+            }
+            request.send(formData)
+        })
+    }
+}
 
-export { initAddToCart }
+export { initAddToCart, initCartDeleteButton }
